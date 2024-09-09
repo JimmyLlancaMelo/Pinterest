@@ -1,0 +1,48 @@
+Home:
+
+    1. Opciones (Inicio, Buscar, Crear):
+
+    2. Autenticacion (Registrarse, Iniciar Session)
+        2.1 Registro (Nombres, Apellidos, Correo Electronico, Contraseña, Fecha de Nacimiento)
+        2.2 Session (Correo y Contraseña)
+
+    3. Si esta Autenticado, entonces el usuario podrá:
+        3.1 Usar contacto
+        3.2 Crear o subir contenido
+        3.3 Dar Like
+        3.4 Guardar
+        3.5 Descargar
+
+    4. Contenido:
+
+        1. Autor
+        2. Titulo y descripcion
+        3. Imagen o Video
+        4. Opciones (Like y Guardar)
+    
+    5. Informacion del Contenido:
+
+        1. Imagen o Video
+        2. Titulo y Contenido
+        3. Opciones (Like, Comentar, Guardar y Descargar)
+        4. Comentarios
+
+Usuario:
+
+    1. Perfil de usuario:
+
+        1. Nombre del usuario
+        2. foto de perfil
+        3. Publicaciones
+        4. Informaicon del usuario:
+            4.1 Nombres
+            4.2 Apellidos
+            4.3 Direccion
+            4.4 Telefono
+
+        5. Opciones de Creador (Si esta Autenticado)
+
+            5.1 Subir o Publicar contenido
+            5.1 Contenido de la Publicacion (Titulo, Descripcion, Imagen o Video)
+
+DATABASE:
