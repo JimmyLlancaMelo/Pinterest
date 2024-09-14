@@ -44,5 +44,3 @@ Usuario:
 
             5.1 Subir o Publicar contenido
             5.1 Contenido de la Publicacion (Titulo, Descripcion, Imagen o Video)
-
-DATABASE:
