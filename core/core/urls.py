@@ -1,12 +1,14 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from .views import HomeView
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', HomeView.as_view(), name='home')
+    path('accounts/', include('allauth.urls')),
+    path('', HomeView.as_view(), name='home'),
+    path('users/',include('accounts.urls',namespace='users'))
 ]
 
 if settings.DEBUG:

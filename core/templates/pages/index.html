@@ -1,53 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red Social</title>
-    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'bootstrap/icons/font/bootstrap-icons.min.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container-fluid justify-content-between">
+{% extends 'pages/base.html' %}
 
-            <div class="col-3 d-flex align-items-center">
-                <img src="{% static 'img/logo.png' %}" alt="Logo" height="40">
-                <form class="d-flex align-items-center form-control">
-                    <button style="border: none; background-color: transparent;" ><span class="bi bi-search text-dark"></span></button>
-                    
-                    <input type="search" class="form-control" style="border: none;" />
-                </form>
-            </div>
+{% block content %}
 
-            <div class="col-6 d-flex align-items-center justify-content-center">
-                <a class="bi bi-house-door" href="#"></a>
-                <a class="bi bi-file-earmark-text" href="#"></a>
-                <a class="bi bi-camera-video" href="#"></a>
-                <a class="bi bi-shop-window" href="#"></a>
-                <a class="bi bi-people" href="#"></a>
-            </div>
+<div>{% include "components/sidebars/sidebar-left.html"%}</div>
+<div>{% include "components/sidebars/sidebar-main.html"%}</div>
+<div>{% include "components/sidebars/sidebar-right.html"%}</div>
 
-            <div class="col-3 d-flex align-items-center justify-content-end">
-                <a class="bi bi-chat-dots" href="#"></a>
-                <a class="bi bi-bell" href="#"></a>
-                <img class="rounded-circle" src="https://via.placeholder.com/40" >
-            </div>
-        </div>
-    </nav>
-
-    <!-- Estructura principal de la página -->
-    <div class="container-fluid mt-5 pt-4">
-        <div class="row">
-            <div class="col-3">{% include "components/sidebars/sidebar-left.html" %}</div>
-            <div class="col-6">{% include "components/sidebars/sidebar-content.html" %}</div>
-            <div class="col-3">{% include "components/sidebars/sidebar-right.html" %}</div>    
-        </div>
-    </div>
-
-    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-</body>
-</html>
+{% endblock  %}

@@ -1,0 +1,38 @@
+{% load static %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/content/main/main.css' %}"> {% endblock %}
+
+<div class="sidebar-public">
+    <div>
+        <img src="{% static 'img/user.png' %}" alt="Logo" height="40">
+        <form><input type="text" placeholder="En que piensas?"></form>
+    </div>
+    <div>
+        <span class="bi bi-heart-fill text-danger fs-5"><a href="#">Fans</a></span>
+        <span class="bi bi-shop text-success fs-5"><a href="#">Productos</a></span>
+        <span class="bi bi-folder-fill text-warning fs-5"><a href="#">Libreria</a></span>
+    </div>
+</div>
+
+<div class="sidebar-content" >
+    <div>
+        <img class="p-0" src="{% static 'img/user.png' %}" alt="Logo" height="50">
+        <div>
+            <h5>Jimmy Llanca</h5>
+            <p>43 seconds ago</p>
+        </div>
+    </div>
+    <div>
+        <div><p>Esto es el contenido del post</p></div>
+        <div>
+            <img class="img-fluid" src="{% static 'img/MacOS3.jpg' %}">
+        </div>
+    </div>
+    <div>
+        <span class="bi bi-eye-fill"><a>Views</a></span>
+        <div>
+            <span class="bi bi-hand-thumbs-up-fill text-primary fs-5"><a href="#">Likes</a></span>
+            <span class="bi bi-hand-thumbs-down-fill text-danger fs-5"><a href="#">Dislikes</a></span>
+        </div>
+        <span class="bi bi-share fs-5"><a href="#">Share</a></span>
+    </div>
+</div>

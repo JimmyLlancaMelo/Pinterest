@@ -1,0 +1,24 @@
+.sidebar-right h3 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #c3c3c3;
+}
+
+
+.sidebar-right {
+    display: grid;
+    grid-template-rows: 0.1fr auto;
+    background-color: white;
+    border: 1px solid #dfdfdf ;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-inline: 20px;
+}
+
+.sidebar-right > div:nth-child(1) {
+    font-size: 1.25rem;
+    font-weight: bold;
+    border-bottom: 2px solid #dddddd; /* Línea azul debajo del título */
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}

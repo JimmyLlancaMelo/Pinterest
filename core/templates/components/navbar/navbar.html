@@ -1,0 +1,28 @@
+{% load static %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/navbar/navbar.css' %}">{% endblock css %}
+<nav>
+    <div>
+        <img src="{% static 'img/logo.png' %}" alt="Logo">
+        <form>
+            <a href="" class="bi bi-search"></a>
+            <input type="search" placeholder="Buscar">
+        </form>
+    </div>
+    <div>
+        <a class="bi bi-house-door {% if request.path == '/' %} activate {% endif %}" href="{% url 'home' %}" ></a>
+        <a class="bi bi-file-earmark-text" href="#"></a>
+        <a class="bi bi-camera-video" href="#"></a>
+        <a class="bi bi-shop-window" href="#"></a>
+        <a class="bi bi-people" href="#"></a>
+    </div>
+    <div>
+        <i class="bi bi-chat-dots" href="#"></i>
+        <i class="bi bi-bell" href="#"></i>
+        <section>
+            <span class="bi bi-cash"></span>
+            <span>{{user.profile.coins}}</span>
+        </section>
+        
+        <a href="{% if user.is_authenticated %} {% url 'users:profile' user.username %} {% else %} # {% endif %}"><img class="rounded-circle" src="{% if user.is_authenticated %} {{user.profile.picture.url}} {% else %} https://via.placeholder.com/40 {% endif %}" ></a>
+    </div>
+</nav>
