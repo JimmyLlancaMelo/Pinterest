@@ -1,0 +1,105 @@
+body, h2, h3,h4,h5,p {
+    margin: 0;
+    padding: 0;
+}
+
+/* -------------------- Perfil -------------------- */
+
+/* -------------------- Estructurando -------------------- */
+
+.perfil { /* Imagen Banner y descripcion */
+    display: grid;
+    grid-template-rows: 20em 10em 1fr;
+    padding-inline: 3%;
+    background-color: #eeeeee;
+}
+
+.perfil >div:nth-child(1){ /* Perfil imagen Banner */
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.perfil >div:nth-child(2) >div:nth-child(1) div { /* Perfil div Imagen User */
+    display: flex;
+    width: 12em;
+    height: 12em;
+    background-color: white;
+    border: 5px solid #ececec;
+    border-radius: 50%;
+    bottom:25%;
+    overflow: hidden;
+    margin-top: -3em; /* Mueve el círculo hacia arriba */
+    padding: 0px;
+}
+
+.perfil >div:nth-child(2) >div:nth-child(2) { /* Perfil div Nombre del usuario */
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0 0 25px;
+}
+
+.perfil >div:nth-child(2){ /* Perfil imagen de usuario y descripcion */
+    display: grid;
+    grid-template-columns: 0.1fr 1fr 1fr;
+
+}
+
+.perfil >div:nth-child(3) {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    margin-bottom: 10px;
+}
+
+.perfil >div:nth-child(3) >div:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+/* -------------------- Aplicando Estilos a Objetos -------------------- */
+
+.perfil > div:nth-child(1) img { /* Imagen Banner */
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* opcional */
+}
+
+.perfil >div:nth-child(2) >div:nth-child(1) div img { /* Imagen User */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit; /* Hace que la imagen herede los bordes redondeados del div */
+}
+
+.perfil >div:nth-child(2) >div:nth-child(2) span { /* Imagen User */
+    color: #757575;
+}
+
+.perfil >div:nth-child(2) >div:nth-child(2) h5 { /* Imagen User */
+    color: #00a251;
+}
+
+
+.perfil >div:nth-child(3) >div:nth-child(1) ul, li, button { /* Perfil Tabs estilos */
+    margin: 0px !important;
+}
+
+/* -------------------- Perfil Content -------------------- */
+
+/* -------------------- Estructurando -------------------- */
+.perfil-content {
+    background-color: #d3d3d3;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    gap: 10px;
+    padding-inline: 10%;
+    padding-top: 20px;
+}
+
+/* Perfil Contenido 1 */
+
+.perfil-content >div:nth-child(1){ /* GRID 1 */
+    display: flex;
+}

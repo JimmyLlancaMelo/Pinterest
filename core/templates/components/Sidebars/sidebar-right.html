@@ -1,16 +1,15 @@
 {% load static %}
-{% block css %} <link rel="stylesheet" href="{% static 'css/content/main/right.css' %}"> {% endblock %}
 
-<div class="sidebar-right">
-    <div>
-        <h3>Contactos</h3>
+<div class="sidebar-right container-fluid">
+    <div class="row mb-1 border-bottom">
+        <section class="col d-flex justify-content-center">
+            <h3 style="color: #b8b8b8;">Amigos</h3>
+        </section>
     </div>
-    <div>
-        <ul class="row">
-            <li>
-                <i class="bi bi-person-circle"></i>
-                <span>Amigo 1</span>
-            </li>
-        </ul>
+    <div class="row border rounded mb-1">
+        <button class="col d-flex btn pb-1 pt-1 align-items-center">
+            <img class="img-fluid rounded-circle" src="{{user.profile.picture.url}}" alt="Logo" style="width: 30px;">
+            <span class="ms-3">Mr Beast</span>
+        </button>
     </div>
 </div>

@@ -1,13 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    AQUI VA MI PROFILE
-    {{user}}
-    {{profile}}
-</body>
-</html>
+{% extends 'pages/base.html' %}
+
+{% load static %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/account/detail.css' %}"> {% endblock %}
+{% block content %}
+
+<div class="perfil">
+    <!-- Primera parte -->
+    <div> 
+        <img src="{{user.profile.banner.url}}" alt="">
+    </div>
+    <!-- Segunda parte -->
+    <div> 
+        <div>
+            <div>
+                <img src="{{user.profile.picture.url}}" alt=""> 
+            </div>
+        </div>
+        <div>
+            
+            <h2>{{user.username}}</h2>
+            {% if profile.verified == 'verified'  %}<h5>Verificado</h5>{% endif %}
+            <span>{{user.profile.coins}} amigos</span>
+        </div>
+        <div>
+
+        </div>
+    </div>
+    <!-- Tercera parte -->
+    <div> 
+        <div>
+            <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="pills-A1" data-bs-toggle="pill" data-bs-target="#pills-a1" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Mi cuenta</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="pills-A2" data-bs-toggle="pill" data-bs-target="#pills-a2" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Company</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="pills-A3" data-bs-toggle="pill" data-bs-target="#pills-a3" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Team members</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-A4" data-bs-toggle="pill" data-bs-target="#pills-a4" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Billing</button>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <form method="post">{% csrf_token %} <input type="submit" value="Editar"> </form>
+            <a class="btn btn-primary" href="">Suscribete</a>
+            <a class="btn btn-primary" href="">Seguir</a>
+        </div>
+    </div>
+</div>
+
+<div class="content-fluid">
+    <div class="row">
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade" id="pills-a1" role="tabpanel" aria-labelledby="pills-A1" tabindex="0">{% include 'pages/users/op-account.html' %}</div>
+            <div class="tab-pane fade" id="pills-a2" role="tabpanel" aria-labelledby="pills-A2" tabindex="0">Tes2</div>
+            <div class="tab-pane fade" id="pills-a3" role="tabpanel" aria-labelledby="pills-A3" tabindex="0">Tes3</div>
+            <div class="tab-pane fade" id="pills-a4" role="tabpanel" aria-labelledby="pills-A4" tabindex="0">Tes4</div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

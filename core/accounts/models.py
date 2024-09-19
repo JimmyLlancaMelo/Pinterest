@@ -5,6 +5,8 @@ import os
 from PIL import Image
 from django.db.models.signals import post_save
 
+# Cuando creamos un usuario se pondra por automatico las siguientes imagenes
+
 def user_directory_path_profile(instance, filenmae):
     profile_picture_name = 'users/{0}/profile.jpg'.format(instance.user.username)
     fullpath =os.path.join(settings.MEDIA_ROOT, profile_picture_name)
@@ -22,6 +24,8 @@ def user_directory_path_banner(instance, filenmae):
         os.remove(fullpath)
     
     return profile_picture_name
+
+
 
 VERIFICATION_OPTIONS=(
     ('unverified','unverified'),

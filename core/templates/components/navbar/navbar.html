@@ -1,28 +1,73 @@
 {% load static %}
-{% block css %} <link rel="stylesheet" href="{% static 'css/navbar/navbar.css' %}">{% endblock css %}
+{% block css %}
+
+<style>
+
+    nav .container-fluid >div:nth-child(1){
+        background-color: white;
+        box-shadow: 2px 2px 10px #d0d0d0;
+        padding: 10px 10px;
+    }
+
+    nav .container-fluid div >div:nth-child(2) a { /* Centro */
+        font-size: 1.5em;
+        padding-inline: 10px ;
+        color: black;
+    }
+
+
+    nav .container-fluid div >div:nth-child(3) a { /* Derecha */
+        margin-left: 3px;
+    }
+
+    nav .container-fluid div >div:nth-child(3) >section:nth-child(2) a { /* Derecha */
+        background-color: #d0d0d0;
+        color: black;
+        font-size: 1.2em;
+        padding: 5px 10px ;
+        border-radius: 50%;
+    }
+
+    .activate {
+        color: red !important;
+        border-bottom: 2px solid red;
+    }
+
+</style>
+
+{% endblock %}
 <nav>
-    <div>
-        <img src="{% static 'img/logo.png' %}" alt="Logo">
-        <form>
-            <a href="" class="bi bi-search"></a>
-            <input type="search" placeholder="Buscar">
-        </form>
-    </div>
-    <div>
-        <a class="bi bi-house-door {% if request.path == '/' %} activate {% endif %}" href="{% url 'home' %}" ></a>
-        <a class="bi bi-file-earmark-text" href="#"></a>
-        <a class="bi bi-camera-video" href="#"></a>
-        <a class="bi bi-shop-window" href="#"></a>
-        <a class="bi bi-people" href="#"></a>
-    </div>
-    <div>
-        <i class="bi bi-chat-dots" href="#"></i>
-        <i class="bi bi-bell" href="#"></i>
-        <section>
-            <span class="bi bi-cash"></span>
-            <span>{{user.profile.coins}}</span>
-        </section>
-        
-        <a href="{% if user.is_authenticated %} {% url 'users:profile' user.username %} {% else %} # {% endif %}"><img class="rounded-circle" src="{% if user.is_authenticated %} {{user.profile.picture.url}} {% else %} https://via.placeholder.com/40 {% endif %}" ></a>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col d-flex align-items-center justify-content-start">
+                <div>
+                    <img class="img-fluid" src="{% static 'img/logo.png' %}" alt="Logo" style="width: 50px;">
+                </div>
+                <form class="d-flex align-items-center">
+                    <input class="form-control" type="search" placeholder="Buscar">
+                    <button class="bi bi-search text-light ms-2 btn btn-danger" href=""></button>
+                </form>
+            </div>
+            <div class="col d-flex align-items-center justify-content-center text-dark">
+                <a class="bi bi-house-door  {% if request.path == '/' %} activate {% endif %}" href="{% url 'home' %}"></a>
+                <a class="bi bi-file-earmark-text" href="#"></a>
+                <a class="bi bi-camera-video" href="#"></a>
+                <a class="bi bi-shop-window" href="#"></a>
+                <a class="bi bi-people" href="#"></a>
+            </div>
+            <div class="col d-flex align-items-center justify-content-end">
+                <section class="border border-success rounded p-1">
+                    <i class="bi bi-cash text-warning"></i>
+                    <span>{{user.profile.coins}}</span>
+                </section>
+                <section class="d-flex justify-content-center">
+                    <a class="bi bi-chat-dots"></a>
+                    <a class="bi bi-bell"></a>
+                </section>
+                <section>
+                    <a href="{% if user.is_authenticated %} {% url 'users:profile' user.username %} {% else %} # {% endif %}"><img class="img-fluid rounded-circle " src="{% if user.is_authenticated %} {{user.profile.picture.url}} {% else %} https://via.placeholder.com/40 {% endif %}" style="width: 50px;"></a>
+                </section>
+            </div>
+        </div>
     </div>
 </nav>

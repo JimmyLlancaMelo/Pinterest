@@ -1,38 +1,36 @@
 {% load static %}
-{% block css %} <link rel="stylesheet" href="{% static 'css/content/main/main.css' %}"> {% endblock %}
+{% block css %}
+<style>
+    .sidebar-public {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        background-color: white;
+        border: 1px solid #dddddd;
+        border-radius: 20px;
+        padding: 10px 10px 0px 10px;
+        box-shadow: 0 0 4px #d8d8d8;
+        margin-bottom: 10px;
+    }
+</style>
+{% endblock %}
 
-<div class="sidebar-public">
-    <div>
-        <img src="{% static 'img/user.png' %}" alt="Logo" height="40">
-        <form><input type="text" placeholder="En que piensas?"></form>
+<div class="sidebar-public container-fluid">
+    <div class="row">
+        <section class="d-flex">
+            <div>
+                <img class="img-fluid rounded-circle me-3" src="{{user.profile.picture.url}}" alt="Logo" style="width: 50px;">
+            </div>
+            <button class="form-control text-start" style="color: gray;">En que estas pensando?</button>
+        </section> 
     </div>
-    <div>
-        <span class="bi bi-heart-fill text-danger fs-5"><a href="#">Fans</a></span>
-        <span class="bi bi-shop text-success fs-5"><a href="#">Productos</a></span>
-        <span class="bi bi-folder-fill text-warning fs-5"><a href="#">Libreria</a></span>
+    <div class="row ">
+        <section class="d-flex justify-content-around align-items-center">
+            <span class="bi bi-heart-fill text-danger fs-5"><a href="#">Fans</a></span>
+            <span class="bi bi-shop text-success fs-5"><a href="#">Productos</a></span>
+            <span class="bi bi-folder-fill text-warning fs-5"><a href="#">Libreria</a></span>
+        </section>
     </div>
 </div>
 
-<div class="sidebar-content" >
-    <div>
-        <img class="p-0" src="{% static 'img/user.png' %}" alt="Logo" height="50">
-        <div>
-            <h5>Jimmy Llanca</h5>
-            <p>43 seconds ago</p>
-        </div>
-    </div>
-    <div>
-        <div><p>Esto es el contenido del post</p></div>
-        <div>
-            <img class="img-fluid" src="{% static 'img/MacOS3.jpg' %}">
-        </div>
-    </div>
-    <div>
-        <span class="bi bi-eye-fill"><a>Views</a></span>
-        <div>
-            <span class="bi bi-hand-thumbs-up-fill text-primary fs-5"><a href="#">Likes</a></span>
-            <span class="bi bi-hand-thumbs-down-fill text-danger fs-5"><a href="#">Dislikes</a></span>
-        </div>
-        <span class="bi bi-share fs-5"><a href="#">Share</a></span>
-    </div>
-</div>
+{% include 'components/Sidebars/post.html' %}
+

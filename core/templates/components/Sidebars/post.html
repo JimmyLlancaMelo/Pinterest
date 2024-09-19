@@ -1,0 +1,55 @@
+{% load static %}
+{% block css %}
+<style>
+    .sidebar-content {
+        background-color: white;
+        border: 1px solid #dddddd;
+        box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+        margin: 20px 0 20px 0;
+    }
+
+    .sidebar-content > div >div:first-child {
+        padding: 10px;
+        margin: 0;
+    }
+
+</style>
+{% endblock %}
+
+<div class="sidebar-content container-fluid">
+
+    <div class="row">
+        <div class="col d-flex">
+            <img class="img-fluid rounded-circle me-3" src="{{user.profile.picture.url}}" alt="Logo" style="width: 50px;">
+            <section>
+                <h5 class="p-0 m-0">Jimmy Llanca</h5>
+                <span class="text-secondary">43 seconds ago</span>
+            </section>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col d-flex flex-column">
+            <section>
+                <p class="m-0 p-0">Este es mi post</p>
+            </section>
+            <img class="img-fluid" src="{% static 'img/MacOS3.jpg' %}">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="row">
+            <section class="col">
+                <span class="bi bi-eye-fill">Views</span>
+            </section>
+            <section class="col d-flex justify-content-center">
+                <span class="bi bi-hand-thumbs-up-fill text-primary fs-5">Likes</span>
+                <span class="bi bi-hand-thumbs-down-fill text-danger fs-5">Dislikes</span>
+            </section>
+            <section class="col d-flex justify-content-end">
+                <span class="bi bi-share fs-5">Share</span>
+            </section>
+        </div>
+    </div>
+
+</div>

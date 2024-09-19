@@ -1,0 +1,17 @@
+{% extends 'pages/users/detail.html' %}
+{% block perfilOptions %}
+<div> <!-- Filtro de publicaciones -->
+    <div>
+        <section>
+            <h2>Publicaciones</h2>
+        </section>
+        <section>
+            <a class="bi bi-search" href=""> Filtros</a>
+        </section>
+    </div>
+</div>
+
+<div> <!-- Publicaciones -->
+    {% include 'components/Sidebars/post.html' %}
+</div>
+{% endblock %}

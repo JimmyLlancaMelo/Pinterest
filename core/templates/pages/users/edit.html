@@ -1,0 +1,74 @@
+{% extends 'pages/base.html' %}
+{% block css %}
+<style>
+
+    .profile-edit form >div {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Container para centrar el formulario -->
+<div class="profile-edit container mt-3">
+    <h2 class="mb-4">Editar Perfil</h2>
+
+    <form method="post" enctype="multipart/form-data"> {% csrf_token %} 
+
+        <div class="row border rounded">
+            <div class="col d-flex flex-column">
+                <label>Foto de Perfil</label>
+                <img src="{{user.profile.picture.url}}" alt="Foto de Perfil" class="img-thumbnail mb-2" style="width: 100px; height: 100px; object-fit: cover;">
+                {{form.picture}}
+            </div>
+            <div class="col d-flex flex-column">
+                <label>Banner</label>
+                <img src="{{user.profile.banner.url}}" alt="Banner" class="img-thumbnail mb-2" style="width: 200px; height: 100px; object-fit: cover;">
+                {{form.banner}}
+            </div>
+        </div>
+        
+        <div class="row border rounded">
+            <div class="row">
+                <div class="col">
+                    <label>Nombre</label>
+                    {{form.first_name}}
+                    <label>Apellido</label>
+                    {{form.last_name}}
+                    <label>Ubicación</label>
+                    {{form.location}}
+                </div>
+                <div class="col">
+                    <label>URL Personal</label>
+                    {{form.url}}
+                    <label>Fecha de Nacimiento</label>
+                    {{form.birthday}}
+                </div> 
+            </div>
+        </div>
+
+        <div class="row border rounded">
+            <div class="col">
+                <label>Biografía</label>
+                {{form.bio}}
+            </div>
+        </div>
+
+        <div class="row border rounded justify-content-end">
+            <div class="col gap-2 d-flex justify-content-center">
+                <section>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </section>
+                <section>
+                    <a href="/users/jimmy/" class="btn btn-secondary">Retornar</a>
+                </section>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,75 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <div class="px-4">
+          <h3 class="text-base fw-semibold text-dark">Información del Solicitante</h3>
+          <p class="mt-1 text-sm text-muted">Detalles personales y solicitud.</p>
+        </div>
+
+        <div class="mt-4 border-top border-muted">
+          <dl class="row pt-3">
+            <!-- Full Name -->
+            <div class="col-12 py-3 d-flex">
+              <dt class="col-sm-3 fw-bold">Nombre completo</dt>
+              <dd class="col-sm-9 text-muted">{{user.first_name}} {{user.last_name}}</dd>
+            </div>
+
+            <!-- Application For -->
+            <div class="col-12 py-3 d-flex">
+              <dt class="col-sm-3 fw-bold">Aplicación para</dt>
+              <dd class="col-sm-9 text-muted">Backend Developer</dd>
+            </div>
+
+            <!-- Email Address -->
+            <div class="col-12 py-3 d-flex">
+              <dt class="col-sm-3 fw-bold">Correo electrónico</dt>
+              <dd class="col-sm-9 text-muted">{{user.email}}</dd>
+            </div>
+
+            <!-- Salary Expectation -->
+            <div class="col-12 py-3 d-flex">
+              <dt class="col-sm-3 fw-bold">Expectativa salarial</dt>
+              <dd class="col-sm-9 text-muted">$120,000</dd>
+            </div>
+
+            <!-- About -->
+            <div class="col-12 py-3 d-flex">
+              <dt class="col-sm-3 fw-bold">Acerca de</dt>
+              <dd class="col-sm-9 text-muted">
+                {{user.profile.bio}}
+              </dd>
+            </div>
+
+            <!-- Attachments -->
+            <div class="col-12 py-3 d-flex">
+              <dt class="col-sm-3 fw-bold">Adjuntos</dt>
+              <dd class="col-sm-9">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-paperclip me-2 text-muted" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M9.5 1a2.5 2.5 0 0 0-5 0v9a4 4 0 0 0 8 0V4a.5.5 0 0 0-1 0v6a3 3 0 0 1-6 0V1a1.5 1.5 0 0 1 3 0v8a.5.5 0 0 0 1 0V1z"/>
+                      </svg>
+                      <span class="me-2">resume_back_end_developer.pdf</span>
+                      <span class="text-muted">2.4 MB</span>
+                    </div>
+                    <a href="#" class="text-primary">Descargar</a>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-paperclip me-2 text-muted" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M9.5 1a2.5 2.5 0 0 0-5 0v9a4 4 0 0 0 8 0V4a.5.5 0 0 0-1 0v6a3 3 0 0 1-6 0V1a1.5 1.5 0 0 1 3 0v8a.5.5 0 0 0 1 0V1z"/>
+                      </svg>
+                      <span class="me-2">coverletter_back_end_developer.pdf</span>
+                      <span class="text-muted">4.5 MB</span>
+                    </div>
+                    <a href="#" class="text-primary">Descargar</a>
+                  </li>
+                </ul>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
