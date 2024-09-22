@@ -1,4 +1,51 @@
 {% extends "account/base_entrance.html" %}
+{% block css %}
+
+<style>
+    .accountLogin-navbar{
+        display: none;
+    }
+
+    .accountLogin-title h1 {
+        text-align: center;
+    }
+
+    .accountLogin {
+        padding-inline: 25%;
+    }
+    .accountLogin >p {
+        text-align: center;
+    }
+
+    .accountLogin >form{
+        border: 2px solid #c8c8c8;
+        border-radius: 20px;
+        padding: 5%;
+        box-shadow: 1px 1px 10px #d4d4d4;
+    }
+    .accountLogin >form >div{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .accountLogin >form >div:nth-of-type(3){
+        display: flex;
+    }
+    .accountLogin >form >div:nth-of-type(3) label{
+        margin-right: 10px;
+    }
+    .accountLogin >form >div:nth-of-type(2) >div{ /* div Forgot your password? */
+        order: 2;
+
+    }    
+    .accountLogin >form >div input{
+        background-color: transparent;
+        border: 2px solid #dbdbdb;
+        border-radius: 5px;
+    }
+</style>
+
+{% endblock  %}
+
 {% load i18n %}
 {% load allauth account %}
 {% block head_title %}
@@ -6,9 +53,14 @@
 {% endblock head_title %}
 
 {% block content %}
+    <div class="accountLogin-title">
     {% element h1 %}
         {% trans "Sign In" %}
     {% endelement %}
+    </div>
+
+    <div class="accountLogin container-fluid">
+
     {% if not SOCIALACCOUNT_ONLY %}
         {% setvar link %}
             <a href="{{ signup_url }}">
@@ -16,9 +68,11 @@
             {% setvar end_link %}
             </a>
         {% endsetvar %}
+
         {% element p %}
             {% blocktranslate %}If you have not created an account yet, then please {{ link }}sign up{{ end_link }} first.{% endblocktranslate %}
         {% endelement %}
+
         {% url 'account_login' as login_url %}
         {% element form form=form method="post" action=login_url tags="entrance,login" %}
             {% slot body %}
@@ -34,6 +88,9 @@
             {% endslot %}
         {% endelement %}
     {% endif %}
+
+    </div>
+
     {% if LOGIN_BY_CODE_ENABLED or PASSKEY_LOGIN_ENABLED %}
         {% element hr %}
         {% endelement %}
