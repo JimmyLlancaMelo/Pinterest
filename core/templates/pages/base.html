@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     {% block css %}{% endblock %}
 </head>
-<body>
+<body style="background-color: #f4f4f4;">
     <header>
         {% include 'components/navbar/navbar.html' %}
     </header>
 
     {% block content %}{% endblock %}
 
-<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

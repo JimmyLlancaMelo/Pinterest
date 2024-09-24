@@ -1,0 +1,102 @@
+{% extends 'pages/base.html' %}
+
+{% load static %}
+{% load humanize %}
+{% block css %}
+<style>
+    .post-detail {
+        background-color: white;
+        border: 1px solid #dddddd;
+        box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 20px ;
+        padding: 20px 20px 0px 20px;
+        max-width: 50%;
+    }
+
+    @media (max-width: 900px) {
+        .post-detail {
+            max-width: 100% ;
+        }
+    }
+
+</style>
+{% endblock %}
+{% block content %}
+    
+
+<div class="container-fluid d-flex justify-content-center">
+
+    <div class="post-detail">
+
+        <div class="row">
+            <div class="col d-flex flex-column">
+                <section class="d-flex justify-content-center border">
+                    <img class="img-fluid" src="{{post.image.image.url}}" style="max-width: 60%;">
+                </section>
+                <section class="border-top border-bottom p-1 mt-2">
+                    <p class="m-0 text-secondary text-break">{{post.body}}</p>
+                </section>
+            </div>
+        </div>
+
+        <div class="row my-2">
+            <div class="col d-flex align-items-center">
+                <section >
+                    <img class="img-fluid rounded-circle me-3" src="{{post.author.profile.picture.url}}" alt="Logo" style="width: 50px;">
+                </section>
+                <section>
+                    <h6 class="p-0 m-0"> <a class="nav-link" href="{% url 'users:profile' username=post.author.username %}">{{post.author.first_name}}</a> </h6>
+                </section>
+            </div>
+            <div class="col d-flex align-items-center justify-content-end">
+                
+                {% if post.author %}
+                    <div class="dropdown">
+                        <button class="bi bi-three-dots-vertical text-secondary btn m-0 p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item"  href="{% url 'social:post-edit' post.pk %}">Edit</a></li>
+                            <li><a class="dropdown-item"  href="{% url 'social:post-delete' post.pk %}">Delete</a></li>
+                        </ul>
+                    </div>
+                {% endif %}
+    
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col d-flex">
+                <section class="d-flex border rounded me-2">
+                    <button class="btn">
+                        <span>25</span>
+                        <span class="text-secondary">likes</span>
+                        <i class="bi bi-hand-thumbs-up-fill text-primary"></i>
+                    </button>
+                </section>
+                <section class="d-flex border rounded">
+                    <button class="btn">
+                        <span>0</span>
+                        <span class="text-secondary">dislikes</span>
+                        <i class="bi bi-hand-thumbs-down"></i>
+                    </button>
+                </section>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="row border-top">
+                <section class="col d-flex justify-content-center p-2">
+                    <div class="d-flex align-items-center border rounded">
+                        <button class="btn text-secondary"><i class="bi bi-hand-thumbs-up text-secondary me-1"></i>Like</button>
+                    </div>
+                    <div class="d-flex align-items-center border rounded ms-1">
+                        <button class="btn text-secondary"><i class="bi bi-chat text-secondary me-1"></i>Comment</button>
+                    </div>
+                    <div class="d-flex align-items-center border rounded ms-1">
+                        <button class="btn text-secondary"><i class="bi bi-share text-secondary me-1"></i>Share</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

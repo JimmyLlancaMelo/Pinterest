@@ -1,0 +1,39 @@
+{% extends 'pages/base.html' %}
+{% block css %}
+<style>
+    .post-edit form select {
+        margin-bottom: 15px;
+    }
+    .post-edit form textarea {
+        border: 1px solid #c5c5c5;
+        border-radius: 10px;
+        outline: none;
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+<div class="container-fluid d-flex justify-content-center">
+    <div class="post-edit mt-3 border rounded shadow-sm p-4" style="background-color: white;">
+        <div class="row">
+            <h3>Editar Post</h3>
+        </div>
+        <div class="row">
+            <p class="text-secondary">Esta informacion será modificada</p>
+        </div>
+        <div class="row">
+            <form method="post"> {% csrf_token %}
+                <section class="row mb-3">{{form.body}}</section>
+                <section class="row">
+                    <div class="col d-flex justify-content-center">
+                        <button class="btn btn-danger w-50 text-light" type="submit">Save</button>
+                    </div>
+                </section>
+                
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

@@ -9,11 +9,10 @@
         margin: 20px 0 20px 0;
     }
 
-    .sidebar-content > div >div:first-child {
+    .sidebar-content > div >div {
         padding: 10px;
         margin: 0;
     }
-
 </style>
 {% endblock %}
 
@@ -27,12 +26,26 @@
                 <span class="text-secondary">{{i.created_on|naturaltime}}</span>
             </section>
         </div>
+        <div class="col d-flex justify-content-end">
+            
+            {% if i.author %}
+                <div class="dropdown">
+                    <button class="bi bi-three-dots-vertical text-secondary btn m-0 p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item"  href="{% url 'social:post-edit' i.pk %}">Edit</a></li>
+                        <li><a class="dropdown-item"  href="{% url 'social:post-delete' i.pk %}">Delete</a></li>
+                        <li><a class="dropdown-item"  href="{% url 'social:post-detail' i.pk %}">View</a></li>
+                    </ul>
+                </div>
+            {% endif %}
+
+        </div>
     </div>
 
     <div class="row">
         <div class="col d-flex flex-column">
             <section>
-                <p class="m-0 mb-2 p-0">{{i.body}}</p>
+                <p class="m-0 mb-2 p-0 text-break">{{i.body}}</p>
             </section>
             <img class="img-fluid" src="{{i.image.image.url}}">
             
