@@ -51,21 +51,35 @@
             
         </div>
     </div>
+    <div class="row mb-2">
 
+    </div>
     <div class="row">
         <div class="row border-top">
-            <section class="col d-flex">
-                
-                <div class="d-flex align-items-center border rounded">
-                    <button class="btn text-secondary"><i class="bi bi-hand-thumbs-up text-secondary me-1"></i>Like</button>
-                </div>
-                <div class="d-flex align-items-center border rounded ms-1">
+            <div class="col d-flex">
+                <section class="d-flex border rounded me-2">
+                    <form method="post" action="{% url 'social:like' i.pk %}">{% csrf_token %}<button class="btn">
+                        <span>{{i.likes.all.count}}</span>
+                        <span class="text-secondary">like</span>
+                        <i class="bi bi-hand-thumbs-up-fill text-primary"></i>
+                    </button></form>
+                </section>
+                <section class="d-flex border rounded">
+                    <form method="post" action="{% url 'social:dislike' i.pk %}">{% csrf_token %}<button class="btn">
+                        <span>{{i.dislikes.all.count}}</span>
+                        <span class="text-secondary">dislike</span>
+                        <i class="bi bi-hand-thumbs-down-fill text-danger"></i>
+                    </button></form>
+                </section>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <section class="d-flex align-items-center border rounded ms-1">
                     <button class="btn text-secondary"><i class="bi bi-chat text-secondary me-1"></i>Comment</button>
-                </div>
-                <div class="d-flex align-items-center border rounded ms-1">
+                </section>
+                <section class="d-flex align-items-center border rounded ms-1">
                     <button class="btn text-secondary"><i class="bi bi-share text-secondary me-1"></i>Share</button>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
     </div>
 </div>
