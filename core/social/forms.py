@@ -8,3 +8,10 @@ class SocialPostForm(forms.ModelForm):
     class Meta:
         model=SocialPost
         fields=['body','image']
+
+class SocialCommentForm(forms.ModelForm):
+    comment = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control'}), required=True)
+    
+    class Meta:
+        model=SocialComment
+        fields=['comment']
