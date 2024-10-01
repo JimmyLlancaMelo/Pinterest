@@ -45,9 +45,15 @@
             </ul>
         </div>
         <div>
-            <form method="post">{% csrf_token %} <input type="submit" value="Editar"> </form>
-            <a class="btn btn-primary" href="">Suscribete</a>
-            <a class="btn btn-primary" href="">Seguir</a>
+            {% if request.user.is_authenticated and request.user == profile.user %}<form method="post">{% csrf_token %}<button type="submit">Editar</button></form> {% else %} No eres el dueño {% endif %}
+            {% if request.user.is_authenticated and request.user != profile.user %}
+            {% if is_following %}
+                <form method="post" action="{% url 'users:remove-follower' profile.pk %}">{% csrf_token %}<button type="submit" class="btn btn-primary">Dejar de seguir</button></form>
+            {% else %}
+                <form method="post" action="{% url 'users:add-follower' profile.pk %}">{% csrf_token %}<button type="submit" class="btn btn-primary">Seguir</button></form>
+            {% endif %}
+            {% endif %}      
+            <p>NUMERO DE SEGUIDORES: {{is_following}}</p>      
         </div>
     </div>
 </div>

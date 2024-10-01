@@ -17,6 +17,10 @@ class SocialPost(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='social_post_author')
     likes = models.ManyToManyField(User, blank=True, related_name='likes')
     dislikes = models.ManyToManyField(User, blank=True, related_name='dislikes')
+    
+    shared_body = models.TextField(blank=True, null=True)
+    shared_user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='+')
+    shared_on = models.DateTimeField(blank=True,null=True)
 
 class SocialComment(models.Model):
     post= models.ForeignKey(SocialPost, on_delete=models.CASCADE)

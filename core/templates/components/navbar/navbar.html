@@ -58,14 +58,14 @@
             <div class="col d-flex align-items-center justify-content-end">
                 <section class="border border-success rounded p-1">
                     <i class="bi bi-cash text-warning"></i>
-                    <span>{{user.profile.coins}}</span>
+                    <span>{{request.user.profile.coins}}</span>
                 </section>
                 <section class="d-flex justify-content-center">
                     <a class="bi bi-chat-dots"></a>
                     <a class="bi bi-bell"></a>
                 </section>
                 <section>
-                    <a href="{% if user.is_authenticated %} {% url 'users:profile' user.username %} {% else %} # {% endif %}"><img class="img-fluid rounded-circle " src="{% if user.is_authenticated %} {{user.profile.picture.url}} {% else %} https://via.placeholder.com/40 {% endif %}" style="width: 50px;"></a>
+                    <a href="{% if request.user.is_authenticated %} {% url 'users:profile' request.user.username %} {% else %} # {% endif %}"><img class="img-fluid rounded-circle " src="{% if user.is_authenticated %} {{request.user.profile.picture.url}} {% else %} https://via.placeholder.com/40 {% endif %}" style="width: 50px;"></a>
                 </section>
             </div>
         </div>

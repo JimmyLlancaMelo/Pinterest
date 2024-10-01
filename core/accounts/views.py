@@ -3,6 +3,8 @@ from django.views import View
 from django.contrib.auth import get_user_model
 from .models import Profile
 from .forms import EditProfileForm
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib import messages
 
 User = get_user_model() # Aqui se encuentra el usuario
 
@@ -11,9 +13,27 @@ class UserProfileView(View):
     def get(self,request, username,*args,**kwargs):
         user = get_object_or_404(User, username=username)
         profile = Profile.objects.get(user=user)
+        followers = profile.followers.all()
+        print(f"User: {request.user}, Authenticated: {request.user.is_authenticated}")
+        if len(followers) == 0:
+            is_following=False
+        
+        for follower in followers:
+            if follower == request.user:
+                is_following = True
+                break
+            
+            else:
+                is_following = False
+        
+        numbers_of_followers = len(followers)
+        
         context={
             'user':user,
             'profile':profile,
+            'follower':followers,
+            'number_followers':numbers_of_followers,
+            'is_following':is_following
         }
         return render(request,'pages/users/detail.html', context)
 
@@ -45,3 +65,27 @@ class UserProfileView(View):
             'form':form
         }
         return render(request, 'pages/users/edit.html', context)
+
+class AddFollower(LoginRequiredMixin, View):
+    def post(self, request,pk, *args,**kwargs):
+        profile = Profile.objects.get(pk=pk)
+        profile.followers.add(request.user)
+        messages.add_message(self.request, messages.SUCCESS,'User Followed')
+        return redirect('users:profile', username=request.user.username)
+
+class RemoveFollower(LoginRequiredMixin, View):
+    def post(self, request,pk, *args,**kwargs):
+        profile = Profile.objects.get(pk=pk)
+        profile.followers.remove(request.user)
+        messages.add_message(self.request, messages.SUCCESS,'User Unfollowed')
+        return redirect('users:profile', username=request.user.username)
+
+class ListFollower(View):
+    def get(self,request,pk,*args,**kwargs):
+        profile = Profile.objects.get(pk=pk)
+        followers = profile.followers.all()
+        context={
+            'profile':profile,
+            'followers':followers,
+        }
+        return render(request, 'pages/social/followers-list.html',context)

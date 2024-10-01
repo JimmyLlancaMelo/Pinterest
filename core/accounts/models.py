@@ -51,6 +51,8 @@ class Profile(models.Model):
     birthday = models.DateField(null=True, blank=True)
     bio = models.TextField(max_length=150, null=True, blank=True)
     
+    followers = models.ManyToManyField(User, blank=True, related_name='followers')
+    
     def __str__(self):
         return self.user.username
 
