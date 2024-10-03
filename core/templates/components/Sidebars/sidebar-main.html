@@ -57,5 +57,11 @@
 </div>
 
 {% for i in posts %}
-    {% include 'components/Sidebars/post.html' %}
+    
+    {% if i.shared_user %}
+        {% include 'components/Sidebars/post-shared.html' %}
+    {% else %}
+        {% include 'components/Sidebars/post.html' %}
+    {% endif %}
+
 {% endfor %}

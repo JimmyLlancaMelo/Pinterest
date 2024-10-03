@@ -22,14 +22,13 @@
             <p class="text-secondary">Esta informacion será modificada</p>
         </div>
         <div class="row">
-            <form method="post"> {% csrf_token %}
-                <section class="row mb-3">{{form.body}}</section>
+            <form method="post"> {% csrf_token %} 
+                <section class="row mb-3">{% if object.shared_user %} {{form.shared_body}} {% else %} {{form.body}} {% endif %}</section>
                 <section class="row">
                     <div class="col d-flex justify-content-center">
                         <button class="btn btn-danger w-50 text-light" type="submit">Save</button>
                     </div>
                 </section>
-                
             </form>
         </div>
 

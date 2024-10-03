@@ -17,4 +17,4 @@ class SocialCommentForm(forms.ModelForm):
         fields=['comment']
 
 class SharedForm(forms.Form):
-    Body = forms.CharField(label='',widget=forms.Textarea(attrs={'class':'form-control'}))
+    body = forms.CharField(label='',widget=forms.Textarea(attrs={'class':'form-control'}))

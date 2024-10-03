@@ -21,6 +21,7 @@ class PostDetailView(LoginRequiredMixin,View):
             'comments':comments
         }
         return render(request, 'pages/social/detail.html', context)
+    
     def post(self,request,pk, *args,**kwargs):
         post = SocialPost.objects.get(pk=pk)
         form = SocialCommentForm(request.POST)
@@ -43,6 +44,7 @@ class PostDetailView(LoginRequiredMixin,View):
 class SharePostView(View):
     def post(self,request,pk, *args,**kwargs):
         original_post = SocialPost.objects.get(pk=pk)
+        print(original_post)
         form = SharedForm(request.POST)
         if form.is_valid():
             new_post = SocialPost(
@@ -57,18 +59,31 @@ class SharePostView(View):
             
         return redirect('home')
 
-class PostEditView(UserPassesTestMixin, UpdateView):
-    model=SocialPost
-    fields=['body']
-    template_name='pages/social/edit.html'
-     
+class PostEditView(UpdateView):
+    model = SocialPost
+    fields = ['body', 'shared_body']  # Definimos todos los campos posibles (aunque solo uno se mostrará)
+    template_name = 'pages/social/edit.html'
+
     def get_success_url(self):
         pk = self.kwargs['pk']
-        return reverse_lazy('social:post-detail', kwargs={'pk':pk})
-    
+        return reverse_lazy('social:post-detail', kwargs={'pk': pk})
+
     def test_func(self):
         post = self.get_object()
-        return self.request.user == post.author
+        return self.request.user == post.shared_user if post.shared_user else self.request.user == post.author
+
+    def get_form(self, form_class=None):
+        # Obtener el formulario base
+        form = super().get_form(form_class)
+
+        # Si el post está compartido, solo mostramos 'shared_body', y ocultamos 'body'
+        if self.object.shared_user:
+            form.fields.pop('body')  # Elimina el campo 'body'
+        else:
+            form.fields.pop('shared_body')  # Elimina el campo 'shared_body'
+
+        return form
+    
 
 class PostDeleteView(UserPassesTestMixin, DeleteView):
     model=SocialPost
@@ -77,7 +92,7 @@ class PostDeleteView(UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         post = self.get_object()
-        return self.request.user == post.author
+        return self.request.user == post.shared_user if post.shared_user  else self.request.user == post.author
 
 class AddLike(LoginRequiredMixin, View):
     def post(self,request,pk, *args,**kwargs):

@@ -38,7 +38,6 @@ class HomeView(LoginRequiredMixin,View):
                 new_post.image = img # Asignar la instancia de Image al post
                 new_post.save()  # Guarda el post nuevamente con la imagen asociada
                 
-
         context = {
             'form':form,
             'share_form':share_form

@@ -10,7 +10,8 @@ urlpatterns = [
 
     path('post/<int:pk>/like', AddLike.as_view(), name='like'),
     path('post/<int:pk>/dislike', AddDislike.as_view(), name='dislike'),
-    
+    path('post/<int:pk>/share', SharePostView.as_view(), name='share-post'),
+        
     path('post/<int:post_pk>/comment/<int:pk>/like', AddCommentLike.as_view(), name='comment-like'),
     path('post/<int:post_pk>/comment/<int:pk>/dislike', AddCommentDislike.as_view(), name='comment-dislike'),
     path('post/<int:post_pk>/comment/<int:pk>/reply', CommentReplyView.as_view(), name='comment-reply'),
@@ -18,5 +19,5 @@ urlpatterns = [
     path('post/<int:post_pk>/comment/edit/<int:pk>/', CommentEditView.as_view(), name='comment-edit'),
     path('post/<int:post_pk>/comment/delete/<int:pk>/', CommentDeleteView.as_view(), name='comment-delete'),
     
-    path('post/<int:pk>/share', SharePostView.as_view(), name='Share-post')
+
 ]
